@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import ejs from "ejs";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = Express();
@@ -11,14 +12,15 @@ var response = "";
 
 function userResponse (req, res, next) {
     response = req.body["userInput"];
-    next;
+    next();
 }
 
-app.use(userResponse);
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.use(userResponse);
+
 app.get ("/", (req, res) => {
-    res.sendFile(__dirname + "/index.html")
+    res.sendFile(__dirname + "/public/index.html")
 });
 
 app.listen (port, (req, res) => {
