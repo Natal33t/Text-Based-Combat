@@ -12,7 +12,11 @@
     </h2>
     <div>
         <p>You see yourself surrounded by enemies. What do you do?</p>
-        <input type="text" id="userInput">
+        <form action="/submit" method="POST">
+            <label for="userInput"></label>
+            <input type="text" name="userInput">
+            <input type="submit" value="Go!">
+        </form>
     </div>
 </body>
 </html>
